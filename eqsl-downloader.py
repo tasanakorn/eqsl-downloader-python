@@ -64,11 +64,13 @@ if (not os.path.isdir(APP_CONFIG_DIR)) :
     os.makedirs(APP_CONFIG_DIR)
 
 config = ConfigParser.ConfigParser()
-config.read(APP_CONFIG)
-MYCALL = config.get('GENERAL', 'MYCALL', MYCALL)
-MYPASS = config.get('GENERAL', 'MYPASS', MYPASS)
-DATA_DIR = config.get('GENERAL', 'DATA_DIR', DATA_DIR)
-
+try:
+    config.read(APP_CONFIG)
+    MYCALL = config.get('GENERAL', 'MYCALL', MYCALL)
+    MYPASS = config.get('GENERAL', 'MYPASS', MYPASS)
+    DATA_DIR = config.get('GENERAL', 'DATA_DIR', DATA_DIR)
+except:
+    pass
 
 if MYCALL == '' or MYPASS == '':
     print "Config folder = ", APP_CONFIG
