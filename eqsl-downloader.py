@@ -112,7 +112,7 @@ if m :
 	logs = adiParse(adif_data)
 	for log in logs :
 		log_count += 1
-		output_file = DATA_DIR + '/' + log['qso_date'] + '_' + log['time_on'] + '_' + log['band'] + '_' + log['mode'] + '_' + log['call'].replace('/','-') + ".png"
+		output_file = DATA_DIR + '/' + log['qso_date'] + '-' + log['time_on'] + '-' + log['band'] + '-' + log['mode'] + '-' + log['call'].replace('/','-') + ".png"
 		if (not os.path.isfile(output_file)) :
 			card_url = '/qslcard/DisplayQSL.cfm?Callsign=' + log['call'] + '&VisitorCallsign=' + MYCALL + '&QSODate=' + log['qso_date'][0:4] + '-' + log['qso_date'][4:6] + '-' + log['qso_date'][6:8] + '%20' + log['time_on'][0:2] + ':' + log['time_on'][2:4] + ':00.0&Band=' + log['band'] + '&Mode=' + log['mode']
 			card_html =  urllib2.urlopen(BASE_URL + card_url).read()
